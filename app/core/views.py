@@ -10,15 +10,15 @@ from core.forms import EventForm
 
 from .models import EmotionPack, Event, Vote, Emotion
 
-class EmotionPackList(LoginRequiredMixin, ListView):
+class EmotionPackList(ListView):
     model = EmotionPack
 
 
-class EmotionPackDetail(LoginRequiredMixin, DetailView):
+class EmotionPackDetail(DetailView):
     model = EmotionPack
 
 
-class EventList(LoginRequiredMixin, ListView):
+class EventList(ListView):
     model = Event
 
     def get_queryset(self):
@@ -26,7 +26,7 @@ class EventList(LoginRequiredMixin, ListView):
         return queryset
 
 
-class EventDetail(LoginRequiredMixin, DetailView):
+class EventDetail(DetailView):
     model = Event
 
     def get_queryset(self):

@@ -14,6 +14,7 @@ class Emotion(models.Model):
     pack = models.ForeignKey(EmotionPack, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     image = models.ImageField()
+    position = models.IntegerField(default=1)
 
     def __str__(self):
         return self.title
