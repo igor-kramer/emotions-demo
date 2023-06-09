@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br/><br/>
+<a href="{% url 'event_create' %}" class="btn btn-outline-dark" role="button">Создать событие</a>
+{% regroup object_list by date as dates_list %}
+<table class="table">
+{% for events in dates_list %}
+<tr>
+<td colspan="5"><b>{{ events.grouper | date:'j.m.Y' }}</b></td>
+</tr>
+{% for event in events.list %}
+<tr>
+<td><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></td>
+<td>{{ event.start_date | date:'G:i'}}</td>
+<td>{{ event.end_date | date:'G:i' }}</td>
+<td>{{ event.vote_set.count }}
+<td><a target="_blank" href="{% url 'event_vote' event.id %}">К голосованию</a></td>
+{% endfor %}
+{% endfor %}
+</table>
+{% endblock %}

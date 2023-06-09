@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+Наборы эмоций<br/>
+{% for pack in object_list %}
+<a href="{% url 'pack_detail' pack.pk %}">{{ pack.title }} - {{ pack.emotion_set.count }} эмоций
+{% empty %}
+Нет наборов эмоций
+{% endfor %}
+{% endblock %}

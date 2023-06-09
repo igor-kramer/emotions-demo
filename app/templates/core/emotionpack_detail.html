@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ object.title}}</h1>
+<table class="table">
+{% for emotion in object.emotion_set.all %}
+    <tr>
+        <td><img width="320" height="131" type="image" name="emotion_{{ emotion.pk }}__" value="{{ emotion.pk }}" alt="{{ emotion.title }}" src="{{ emotion.image.url}}"></td>
+        <td><h3>{{ emotion.title }}</h3></td>
+    </tr>
+{% endfor %}
+</table>
+
+<br/>
+<a href="{% url 'packs_list' %}">К списку наборов</a>
+{% endblock %}

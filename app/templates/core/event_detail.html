@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>
+  {{ object.title }}
+  <small class="text-body-secondary">{{ object.description }}</small>
+</h3>
+<h4>{{ object.start_date | date:'j.m.Y G:i' }} - {{ object.end_date | date:'j.m.Y G:i'}} </h4>
+<h4>Всего голосов: {{ object.vote_set.count }}</h4>
+
+<table class="table">
+{% for emotion in statistics %}
+    <tr>
+        <td><img width="320" height="131" type="image" name="emotion_{{ emotion.pk }}__" value="{{ emotion.pk }}" alt="{{ emotion.title }}" src="{{ emotion.image.url}}"></td>
+        <td><h3>{{ emotion.title }}</h3></td>
+        <td><h3 {% if forloop.first %} class="text-success"{% endif %}{% if forloop.last %} class="text-danger"{% endif %}>{{ emotion.vote_count }}</h3></td>
+    </tr>
+{% endfor %}
+</table>
+<br/>
+<a href="{% url 'events' %}">К событиям</a>
+
+
+{% endblock %}
