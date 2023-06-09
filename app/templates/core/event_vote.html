@@ -9,7 +9,7 @@
   <body>
   <h2>Оцените мероприятие. Ваше мнение очень важно для нас<h2>
   <div class="container-fluid">
-{% for emotion in object.template.pack.emotion_set.all %}
+{% for emotion in object.get_emotions %}
 <div style='float:left; margin-right:20px'>
 <form method="post">
     {% csrf_token %}

@@ -9,6 +9,8 @@ class EmotionPack(models.Model):
     def __str__(self):
         return self.title
 
+    def get_emotions(self):
+        return self.emotion_set.all().order_by('position')
 
 class Emotion(models.Model):
     pack = models.ForeignKey(EmotionPack, on_delete=models.CASCADE)
@@ -38,6 +40,9 @@ class Event(models.Model):
     start_date = models.DateTimeField('Начало')
     end_date = models.DateTimeField('Окончание')
 
+    def get_emotions(self):
+        return self.template.pack.get_emotions()
+    
     def __str__(self):
         return self.title
 

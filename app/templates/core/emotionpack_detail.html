@@ -3,7 +3,7 @@
 {% block content %}
 <h1>{{ object.title}}</h1>
 <table class="table">
-{% for emotion in object.emotion_set.all %}
+{% for emotion in object.get_emotions %}
     <tr>
         <td><img width="320" height="131" type="image" name="emotion_{{ emotion.pk }}__" value="{{ emotion.pk }}" alt="{{ emotion.title }}" src="{{ emotion.image.url}}"></td>
         <td><h3>{{ emotion.title }}</h3></td>
